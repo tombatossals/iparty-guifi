@@ -9,7 +9,7 @@
 
   URL: http://code.google.com/p/html5slides/
 */
-
+var _DEBUG=1;
 function getInternetExplorerVersion() {
   var rv = -1; // Return value assumes failure.
   if (navigator.appName == 'Microsoft Internet Explorer') {
@@ -644,7 +644,7 @@ function initialize() {
   getCurSlideFromHash();
 
   if (window['_DEBUG']) {
-    PERMANENT_URL_PREFIX = '../';
+    PERMANENT_URL_PREFIX = './';
   }
 
   if (window['_DCL']) {
@@ -728,7 +728,13 @@ function gnext() {
 
 function updategal() {
 
+    var m = document.querySelector("article.current.map");
     var g = document.querySelector("article.current.fill");
+    if (m != null ) {
+        map();
+        return;
+    }
+
     if (g == null || g.length == 0) return;
 
     // Al pulsar click sobre la imagen , pasar a la siguiente
@@ -764,4 +770,25 @@ function updategal() {
     } else {
         g.querySelector("h3").innerHTML = current.getAttribute("alt");
     }
+}
+
+function map() {
+    var map_options = {
+        zoom: 12,
+        center: new google.maps.LatLng(40.000531,-0.039139),
+        mapTypeId: google.maps.MapTypeId.HYBRID,
+        zoomControl: true,
+        panControl: false,
+        streetViewControl: false,
+        zoomControlOptions: {
+            style: google.maps.ZoomControlStyle.SMALL
+        }
+    };
+    var map = new google.maps.Map(document.getElementById('map'), map_options);
+    loadWMS(map);
+
+    legend = document.createElement('div');
+    legend.innerHTML='<div class="legend" style="background: white; padding: 5px; font-size: 10px;"><ul><li><img src="images/map/yellow.png" /> Enlaces funcionando</li><li><img src="images/map/green.png" /> Troncales entre supernodos</li><li><img src="images/map/blue.png" /> Enlaces en pruebas</li><li><img src="images/map/dot.png" /> Nodos de usuario</li><li><img src="images/map/star.png" /> Supernodos</li></ul></div>';
+    legend.index = 1;
+    map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(legend);
 }

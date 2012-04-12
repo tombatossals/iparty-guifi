@@ -72,12 +72,10 @@
 
       </article>
 
-      <article>
+      <article class="map">
         <h1 class="title">Evolución en Castellón de la red guifi.net</h1></header>
         <br style="clear: both;" />
-        <div style="position: relative">
-            <div id="map" style="width: 780px; height: 500px;"></div>
-        </div>
+        <div id="map" style="width: 780px; height: 500px;"></div>
         <p style="margin:0; font-size: .8em;" class="small">Actualmente en Castellón hay <strike>271</strike> (2010), <strike>1012</strike> (2011), <strong>2.398</strong> (2012) nodos activos y <strike>175</strike> (2010), <strike>363</strike> (2011), <strong>954</strong> proyectados.</p>
       </article>
 
@@ -119,7 +117,9 @@
         <ul>
         <li><strong>VPN con la UJI.</strong> La UJI ofrece salida a Internet a través de guifi.net a todos sus usuarios de la comunidad universitaria (PAS/PDI/Alumnos).</li>
         <li><strong>VPN con otra ubicación</strong>. No es complicado compartir la conexión ADSL/Cable de una ubicación a través de guifi.net, por ejemplo mediante un túnel PPTP.</li>
-        <li><strong>Proxies federados de guifi.net.</strong> Podemos obtener un acceso a internet básico mediante la conexión que ofrecen gratuitamente algunos de sus usuarios utilizando el sistema de proxies federados.</li>
+        <li><strong>Proxies federados de guifi.net.</strong> Podemos obtener un
+        acceso a internet básico mediante la conexión que ofrecen gratuitamente
+        los ayuntamientos de algunas localidades, o los propios usuarios de la red.</li>
         </ul>
       </article>
 
@@ -155,26 +155,5 @@
 
     <script type="text/javascript" src="js/guifinet_wms.js"></script>
     <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script>
-    <script type="text/javascript">
-    var map_options = {
-                zoom: 12,
-                center: new google.maps.LatLng(40.000531,-0.039139),
-                mapTypeId: google.maps.MapTypeId.HYBRID,
-                zoomControl: true,
-                panControl: false,
-                streetViewControl: false,
-                zoomControlOptions: {
-                    style: google.maps.ZoomControlStyle.SMALL
-                }
-    };
-    var map = new google.maps.Map(document.getElementById('map'), map_options);
-    loadWMS(map);
-
-    legend = document.createElement('div');
-    legend.innerHTML='<div class="legend" style="background: white; padding: 5px; font-size: 10px;"><ul><li><img src="images/map/yellow.png" /> Enlaces funcionando</li><li><img src="images/map/green.png" /> Troncales entre supernodos</li><li><img src="images/map/blue.png" /> Enlaces en pruebas</li><li><img src="images/map/dot.png" /> Nodos de usuario</li><li><img src="images/map/star.png" /> Supernodos</li></ul></div>';
-    legend.index = 1;
-    map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(legend);
-
-    </script>
   </body>
 </html>

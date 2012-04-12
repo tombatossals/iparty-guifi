@@ -145,7 +145,7 @@ img.shadow {
 /* Clickable/tappable areas */
 
 .slide-area {
-  z-index: 1000;
+  z-index: 0;
 
   position: absolute;
   left: 0;
@@ -219,12 +219,13 @@ img.shadow {
   -moz-transform: translate(-1020px);
   -webkit-transform: translate3d(-1020px, 0, 0);
 }
+
 .slides > article.current {
   display: block;
   transform: translate(0);
   -o-transform: translate(0);
   -webkit-transform: translate3d(0, 0, 0);
-  z-index: -2;
+  z-index: 0;
 }
 .slides > article.next {
   display: block;
